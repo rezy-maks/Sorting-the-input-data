@@ -6,7 +6,6 @@
 #define line 10 //(для Кира) количество строк (для vocabularySort)
 #define column 32 //(для Кира) количество столбцов (для vocabularySort)
 
-
 void numberSort(
         int array[],
         int l,
