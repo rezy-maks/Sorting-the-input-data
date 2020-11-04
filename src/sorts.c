@@ -3,18 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define line 10 //(для Кира) количество строк (для vocabularySort)
-#define column 32 //(для Кира) количество столбцов (для vocabularySort)
+#define line 10 
+#define column 32 
 
 void numberSort(
         int array[],
         int l,
-        int r) //(для Кира) если ввести массив чисел (array), нулевой (l) и
-               //последний (r) эллемент, то функция их отсортирует (наверное
-               //¯\_(ツ)_/¯). В функции нет вывода массива
+        int r) 
 {
     int i = l, j = r, x = array[(l + r) / 2],
-        temp; // для упорядочивания чисел был выбран метод сортировки QuickSort
+        temp; 
 
     do {
         while (array[i] < x)
@@ -39,9 +37,7 @@ void numberSort(
         numberSort(array, l, j);
 }
 
-int vocabularySort() //(для Кира) функция работает, использует bubbleSort. В
-                      //этой вариации сортирует из заранее созданного текстового
-                      //файла.
+int vocabularySort() 
 {
     char strings[line][column], str[column];
     FILE* f;
