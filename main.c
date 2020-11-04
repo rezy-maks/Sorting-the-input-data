@@ -1,0 +1,87 @@
+#include "sorts.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define N 10 //Количество целых чисел для сортировки
+//Ключи для запуска программы:
+// -nt - сортировка из файла от меньшего к большему, результат записывается в файл
+// -rnt - сортировка из файла от большего к меньшему, результат записывается в файл
+
+int main(int argc, char* argv[])
+{
+    if (argc > 1) {
+
+        FILE* f1,* f2;
+
+         if (argv[1][0] == '-' && argv[1][1] == 'n' && argv[1][2] == 't') {
+            int i = 0;
+            int file_numbers[N];
+            f1 = fopen("/home/killreal/TRPO/Sorting-the-input-data/test.txt", "r");
+            if ( f1 != NULL ){
+            while ( feof(f1) == 0 ) {
+                fscanf(f1, "%d ", &file_numbers[i]);
+                i++;
+            }
+            fclose(f1);
+            numberSort(file_numbers, 0, N - 1);
+            f2 = fopen("/home/killreal/TRPO/Sorting-the-input-data/res.txt", "w");
+            for (i = 0; i < N; i++){
+                fprintf(f2, "%d ", file_numbers[i]);
+            }
+        fclose(f2);
+        printf("Отсортированный от меньшего к большему массив записан в res.txt\n");
+            }
+        }
+
+        if (argv[1][0] == '-' && argv[1][1] == 'r' && argv[1][2] == 'n' && argv[1][3] == 't') {
+            int i = 0;
+            int file_numbers[N];
+            f1 = fopen("/home/killreal/TRPO/Sorting-the-input-data/test.txt", "r");
+            if ( f1 != NULL ){
+            while ( feof(f1) == 0 ) {
+                fscanf(f1, "%d ", &file_numbers[i]);
+                i++;
+            }
+            fclose(f1);
+            numberSort(file_numbers, 0, N - 1);
+            f2 = fopen("/home/killreal/TRPO/Sorting-the-input-data/revres.txt", "w");
+            for (i = N - 1; i > 0; i--){
+                fprintf(f2, "%d ", file_numbers[i]);
+            }
+        fclose(f2);
+        printf("Отсортированный от большего к меньшему массив записан в revres.txt\n");
+            }
+        }
+
+        if (argv[1][0] == '-' && argv[1][1] == 'n' && argv[1][2] == 'c') {
+    	int input_numbers[N];
+    	printf("Введите 10 чисел для сортировки в консоль.\n");
+    	for (int i = 0; i < N; i++){
+    		scanf("%d", &input_numbers[i]);
+    	}
+    	numberSort(input_numbers, 0, N - 1);
+    	printf("Отсортированный от меньшего к большему массив:");
+    	for (int i = 0; i < N; i++){
+    		printf("%d ", input_numbers[i]);
+    	}
+    	printf("\n");
+        }
+
+        if (argv[1][0] == '-' && argv[1][1] == 'r' && argv[1][2] == 'n' && argv[1][3] == 'c') {
+    	int input_numbers[N];
+    	printf("Введите 10 чисел для сортировки в консоль.\n");
+    	for (int i = 0; i < N; i++){
+    		scanf("%d", &input_numbers[i]);
+    	}
+    	numberSort(input_numbers, 0, N - 1);
+    	printf("Отсортированный от меньшего к большему массив:");
+    	for (int i = N - 1; i > 0; i--){
+    		printf("%d ", input_numbers[i]);
+    	}
+    	printf("\n");
+        }
+    return 0;
+    }
+}
+
