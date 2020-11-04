@@ -3,5 +3,5 @@ language: c
 compiler: gcc
 
 script:
-	-make
-	-git ls-files sources/ | xargs clang-format && git diff --exit-code
+    -make
+    -git ls-files sources/ | xargs clang-format && git diff --exit-code
