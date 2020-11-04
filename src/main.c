@@ -41,16 +41,19 @@ int main(int argc, char* argv[])
                     i++;
                 }
                 fclose(f1);
-                numberSort(file_numbers, 0, i - 1);
+                numberSort(file_numbers, 0, N - 1);
                 f2
                         = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                                "thirtdparty/res.txt",
+                                "thirdparty/res.txt",
                                 "w");
+                printf("Массив, записанный в файл:");
                 for (i = 0; i < N; i++) {
                     fprintf(f2, "%d ", file_numbers[i]);
+                    printf("%d ", file_numbers[i]);
                 }
                 fclose(f2);
-                printf("Отсортированный от меньшего к большему массив записан "
+                printf("\nОтсортированный от меньшего к большему массив "
+                       "записан "
                        "в res.txt\n");
             }
         }
@@ -74,11 +77,14 @@ int main(int argc, char* argv[])
                         = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
                                 "thirdparty/revres.txt",
                                 "w");
-                for (i = N - 1; i > 0; i--) {
+                printf("Массив, записанный в файл:");
+                for (i = N - 1; i > -1; i--) {
                     fprintf(f2, "%d ", file_numbers[i]);
+                    printf("%d ", file_numbers[i]);
                 }
                 fclose(f2);
-                printf("Отсортированный от большего к меньшему массив записан "
+                printf("\nОтсортированный от большего к меньшему массив "
+                       "записан "
                        "в revres.txt\n");
             }
         }
@@ -105,8 +111,8 @@ int main(int argc, char* argv[])
                 scanf("%d", &input_numbers[i]);
             }
             numberSort(input_numbers, 0, N - 1);
-            printf("Отсортированный от меньшего к большему массив:");
-            for (int i = N - 1; i > 0; i--) {
+            printf("Отсортированный от большего к меньшему массив:");
+            for (int i = N - 1; i > -1; i--) {
                 printf("%d ", input_numbers[i]);
             }
             printf("\n");

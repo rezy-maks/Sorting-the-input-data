@@ -105,7 +105,7 @@ int rvocabularySort()
                 strcpy(strings[j + 1], str);
             }
     /* Выводим отсортированные строки */
-    for (i = count - 1; i > 0; i--)
+    for (i = count - 1; i > -1; i--)
         printf("%s\n", strings[i]);
     return 0;
 }
