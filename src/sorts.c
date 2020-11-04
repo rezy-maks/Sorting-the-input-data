@@ -39,7 +39,7 @@ void numberSort(
         numberSort(array, l, j);
 }
 
-void vocabularySort() //(для Кира) функция работает, использует bubbleSort. В
+int vocabularySort() //(для Кира) функция работает, использует bubbleSort. В
                       //этой вариации сортирует из заранее созданного текстового
                       //файла.
 {
@@ -47,7 +47,8 @@ void vocabularySort() //(для Кира) функция работает, ис�
     FILE* f;
     int count = 0, i, j;
     if ((f
-         = fopen("/home/killreal/TRPO/Sorting-the-input-data/testtext.txt",
+         = fopen("/home/killreal/TRPO/Sorting-the-input-data/thirdparty/"
+                 "testtext.txt",
                  "r"))
         == NULL) {
         return 1;
@@ -76,13 +77,14 @@ void vocabularySort() //(для Кира) функция работает, ис�
     return 0;
 }
 
-void rvocabularySort()
+int rvocabularySort()
 {
     char strings[line][column], str[column];
     FILE* f;
     int count = 0, i, j;
     if ((f
-         = fopen("/home/killreal/TRPO/Sorting-the-input-data/testtext.txt",
+         = fopen("/home/killreal/TRPO/Sorting-the-input-data/thirdparty/"
+                 "testtext.txt",
                  "r"))
         == NULL) {
         return 1;

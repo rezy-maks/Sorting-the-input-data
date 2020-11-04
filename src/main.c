@@ -35,8 +35,10 @@ int main(int argc, char* argv[])
         if (argv[1][0] == '-' && argv[1][1] == 'n' && argv[1][2] == 't') {
             int i = 0;
             int file_numbers[N];
-            f1 = fopen(
-                    "/home/killreal/TRPO/Sorting-the-input-data/test.txt", "r");
+            f1
+                    = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                            "thirdparty/test.txt",
+                            "r");
             if (f1 != NULL) {
                 while (feof(f1) == 0) {
                     fscanf(f1, "%d ", &file_numbers[i]);
@@ -44,9 +46,10 @@ int main(int argc, char* argv[])
                 }
                 fclose(f1);
                 numberSort(file_numbers, 0, i - 1);
-                f2 = fopen(
-                        "/home/killreal/TRPO/Sorting-the-input-data/res.txt",
-                        "w");
+                f2
+                        = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                                "thirtdparty/res.txt",
+                                "w");
                 for (i = 0; i < N; i++) {
                     fprintf(f2, "%d ", file_numbers[i]);
                 }
@@ -60,8 +63,10 @@ int main(int argc, char* argv[])
             && argv[1][3] == 't') {
             int i = 0;
             int file_numbers[N];
-            f1 = fopen(
-                    "/home/killreal/TRPO/Sorting-the-input-data/test.txt", "r");
+            f1
+                    = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                            "thirdparty/test.txt",
+                            "r");
             if (f1 != NULL) {
                 while (feof(f1) == 0) {
                     fscanf(f1, "%d ", &file_numbers[i]);
@@ -69,9 +74,10 @@ int main(int argc, char* argv[])
                 }
                 fclose(f1);
                 numberSort(file_numbers, 0, N - 1);
-                f2 = fopen(
-                        "/home/killreal/TRPO/Sorting-the-input-data/revres.txt",
-                        "w");
+                f2
+                        = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                                "thirdparty/revres.txt",
+                                "w");
                 for (i = N - 1; i > 0; i--) {
                     fprintf(f2, "%d ", file_numbers[i]);
                 }
@@ -100,28 +106,29 @@ int main(int argc, char* argv[])
             int input_numbers[N];
             printf("Введите 10 чисел для сортировки в консоль.\n");
             for (int i = 0; i < N; i++) {
-    		scanf("%d", &input_numbers[i]);
-    	}
-    	numberSort(input_numbers, 0, N - 1);
-    	printf("Отсортированный от меньшего к большему массив:");
-    	for (int i = N - 1; i > 0; i--){
-    		printf("%d ", input_numbers[i]);
-    	}
-    	printf("\n");
+                scanf("%d", &input_numbers[i]);
+            }
+            numberSort(input_numbers, 0, N - 1);
+            printf("Отсортированный от меньшего к большему массив:");
+            for (int i = N - 1; i > 0; i--) {
+                printf("%d ", input_numbers[i]);
+            }
+            printf("\n");
         }
 
         if (argv[1][0] == '-' && argv[1][1] == 't' && argv[1][2] == 'f') {
-    	printf("Отсортированные в афлавитном порядке с учётом регистра слова:\n");
-    	vocabularySort();
-    	printf("\n");
+            printf("Отсортированные в афлавитном порядке с учётом регистра "
+                   "слова:\n");
+            vocabularySort();
+            printf("\n");
         }
 
-        if (argv[1][0] == '-' && argv[1][1] == 'r' && argv[1][2] == 't' &&  argv[1][3] == 'f') {
-    	printf("Отсортированные в обратном алфавитном порядке с учётом регистра слова:\n");
-    	rvocabularySort();
-    	printf("\n");
+        if (argv[1][0] == '-' && argv[1][1] == 'r' && argv[1][2] == 't'
+            && argv[1][3] == 'f') {
+            printf("Отсортированные в обратном алфавитном порядке с учётом "
+                   "регистра слова:\n");
+            rvocabularySort();
+            printf("\n");
         }
-	    }
- }
-
-
+    }
+}
