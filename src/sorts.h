@@ -7,3 +7,5 @@ void numberSort(int array[], int l, int r);
 int vocabularySort();
 
 int rvocabularySort();
+
+int dateSort ();

@@ -5,6 +5,12 @@
 #include <string.h>
 #define N 10 //Количество целых чисел для сортировки
 
+typedef struct DATE {
+    int day;
+    int month;
+    int year;
+} date;
+
 int main(int argc, char* argv[])
 {
     if (argc == 1) {
@@ -23,6 +29,9 @@ int main(int argc, char* argv[])
         printf("-rtf - сортировка текста в обратном алфавитном порядке, "
                "заданного файлом, результат выводится в консоль (чувствителена "
                "к регистру)\n");
+        printf("-d - сортировка дат из файла от меньшего к большему,"
+               "результат записывается в файл (даты строго в формате "
+               "'dd-mm-yyyy dd-mm-yyyy' )\n");
     }
 
     if (argc > 1) {
@@ -32,7 +41,8 @@ int main(int argc, char* argv[])
             int i = 0;
             int file_numbers[N];
             f1
-                    = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                    = fopen("/home/maks/proga/1 "
+                            "course/trpo/coursework/Sorting-the-input-data/"
                             "thirdparty/test.txt",
                             "r");
             if (f1 != NULL) {
@@ -43,7 +53,8 @@ int main(int argc, char* argv[])
                 fclose(f1);
                 numberSort(file_numbers, 0, N - 1);
                 f2
-                        = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                        = fopen("/home/maks/proga/1 "
+                                "course/trpo/coursework/Sorting-the-input-data/"
                                 "thirdparty/res.txt",
                                 "w");
                 printf("Массив, записанный в файл:");
@@ -63,7 +74,8 @@ int main(int argc, char* argv[])
             int i = 0;
             int file_numbers[N];
             f1
-                    = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                    = fopen("/home/maks/proga/1 "
+                            "course/trpo/coursework/Sorting-the-input-data/"
                             "thirdparty/test.txt",
                             "r");
             if (f1 != NULL) {
@@ -74,7 +86,8 @@ int main(int argc, char* argv[])
                 fclose(f1);
                 numberSort(file_numbers, 0, N - 1);
                 f2
-                        = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
+                        = fopen("/home/maks/proga/1 "
+                                "course/trpo/coursework/Sorting-the-input-data/"
                                 "thirdparty/revres.txt",
                                 "w");
                 printf("Массив, записанный в файл:");
@@ -130,6 +143,11 @@ int main(int argc, char* argv[])
             printf("Отсортированные в обратном алфавитном порядке с учётом "
                    "регистра слова:\n");
             rvocabularySort();
+            printf("\n");
+        }
+
+        if (argv[1][0] == '-' && argv[1][1] == 'd') {
+            dateSort();
             printf("\n");
         }
     }
