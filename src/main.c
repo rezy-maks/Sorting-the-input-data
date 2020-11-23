@@ -35,100 +35,22 @@ int main(int argc, char* argv[])
     }
 
     if (argc > 1) {
-        FILE *f1, *f2;
-
         if (argv[1][0] == '-' && argv[1][1] == 'n' && argv[1][2] == 't') {
-            int i = 0;
-            int file_numbers[N];
-            f1
-                    = fopen("/home/maks/proga/1 "
-                            "course/trpo/coursework/Sorting-the-input-data/"
-                            "thirdparty/test.txt",
-                            "r");
-            if (f1 != NULL) {
-                while (feof(f1) == 0) {
-                    fscanf(f1, "%d ", &file_numbers[i]);
-                    i++;
-                }
-                fclose(f1);
-                numberSort(file_numbers, 0, N - 1);
-                f2
-                        = fopen("/home/maks/proga/1 "
-                                "course/trpo/coursework/Sorting-the-input-data/"
-                                "thirdparty/res.txt",
-                                "w");
-                printf("Массив, записанный в файл:");
-                for (i = 0; i < N; i++) {
-                    fprintf(f2, "%d ", file_numbers[i]);
-                    printf("%d ", file_numbers[i]);
-                }
-                fclose(f2);
-                printf("\nОтсортированный от меньшего к большему массив "
-                       "записан "
-                       "в res.txt\n");
-            }
+            textmassSort();
         }
 
         if (argv[1][0] == '-' && argv[1][1] == 'r' && argv[1][2] == 'n'
             && argv[1][3] == 't') {
-            int i = 0;
-            int file_numbers[N];
-            f1
-                    = fopen("/home/maks/proga/1 "
-                            "course/trpo/coursework/Sorting-the-input-data/"
-                            "thirdparty/test.txt",
-                            "r");
-            if (f1 != NULL) {
-                while (feof(f1) == 0) {
-                    fscanf(f1, "%d ", &file_numbers[i]);
-                    i++;
-                }
-                fclose(f1);
-                numberSort(file_numbers, 0, N - 1);
-                f2
-                        = fopen("/home/maks/proga/1 "
-                                "course/trpo/coursework/Sorting-the-input-data/"
-                                "thirdparty/revres.txt",
-                                "w");
-                printf("Массив, записанный в файл:");
-                for (i = N - 1; i > -1; i--) {
-                    fprintf(f2, "%d ", file_numbers[i]);
-                    printf("%d ", file_numbers[i]);
-                }
-                fclose(f2);
-                printf("\nОтсортированный от большего к меньшему массив "
-                       "записан "
-                       "в revres.txt\n");
-            }
+            textrmassSort();
         }
 
         if (argv[1][0] == '-' && argv[1][1] == 'n' && argv[1][2] == 'c') {
-            int input_numbers[N];
-            printf("Введите 10 чисел для сортировки в консоль.\n");
-            for (int i = 0; i < N; i++) {
-                scanf("%d", &input_numbers[i]);
-            }
-            numberSort(input_numbers, 0, N - 1);
-            printf("Отсортированный от меньшего к большему массив:");
-            for (int i = 0; i < N; i++) {
-                printf("%d ", input_numbers[i]);
-            }
-            printf("\n");
+            massSort();
         }
 
         if (argv[1][0] == '-' && argv[1][1] == 'r' && argv[1][2] == 'n'
             && argv[1][3] == 'c') {
-            int input_numbers[N];
-            printf("Введите 10 чисел для сортировки в консоль.\n");
-            for (int i = 0; i < N; i++) {
-                scanf("%d", &input_numbers[i]);
-            }
-            numberSort(input_numbers, 0, N - 1);
-            printf("Отсортированный от большего к меньшему массив:");
-            for (int i = N - 1; i > -1; i--) {
-                printf("%d ", input_numbers[i]);
-            }
-            printf("\n");
+            rmassSort();
         }
 
         if (argv[1][0] == '-' && argv[1][1] == 't' && argv[1][2] == 'f') {

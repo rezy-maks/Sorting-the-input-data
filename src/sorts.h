@@ -8,4 +8,12 @@ int vocabularySort();
 
 int rvocabularySort();
 
-int dateSort ();
+int dateSort();
+
+void rmassSort();
+
+void massSort();
+
+void textrmassSort();
+
+void textmassSort();
