@@ -17,3 +17,5 @@ void massSort();
 void textrmassSort();
 
 void textmassSort();
+
+int check_mass(int input[], int s);

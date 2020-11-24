@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define N 10
+#define N 10 // Количество сортируемых элементов
 #define line 10
 #define column 32
 
@@ -13,6 +13,18 @@ typedef struct DATE {
     int month;
     int year;
 } date;
+
+int check_mass(int input[], int s){
+    int n = s, a[n];
+    for (int i = 0; i < n; i++){
+        a[i] = input[i];
+    }
+    for (int i = 0; i < n - 1; i++){
+        if (a[i] > a[i + 1])
+        return 0;
+    }
+    return 1;
+}
 
 int string_to_int(char* string, int size)
 {
@@ -58,11 +70,7 @@ int vocabularySort()
     char strings[line][column], str[column];
     FILE* f;
     int count = 0, i, j;
-    if ((f
-         = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                 "thirdparty/testtext.txt",
-                 "w"))
-        == NULL) {
+    if ((f = fopen("../thirdparty/testtext.txt", "w")) == NULL) {
         return 1;
     }
     /* Считываем слова из файла */
@@ -95,8 +103,7 @@ int rvocabularySort()
     FILE* f;
     int count = 0, i, j;
     if ((f
-         = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                 "thirdparty/testtext.txt",
+         = fopen("../thirdparty/testtext.txt",
                  "r"))
         == NULL) {
         return 1;
@@ -132,8 +139,7 @@ int dateSort(int argc, char* argv[])
     int size;
     FILE *f1, *f2;
     f1
-            = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                    "thirdparty/datetest.txt",
+            = fopen("../thirdparty/datetest.txt",
                     "r");
     fseek(f1, 0, SEEK_END);
     size = ftell(f1);
@@ -198,8 +204,7 @@ int dateSort(int argc, char* argv[])
             }
         }
         f2
-                = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                        "thirdparty/dateres.txt",
+                = fopen("../thirdparty/dateres.txt",
                         "w");
         printf("Массив, записанный в файл:");
         for (i = 0; i < size; i++) {
@@ -222,33 +227,43 @@ int dateSort(int argc, char* argv[])
 
 void rmassSort()
 {
-    int input_numbers[N];
-    printf("Введите 10 чисел для сортировки в консоль.\n");
+    int sizemass;
+    printf("Введите количество сортируемых чисел:\n");
+    scanf("%d", &sizemass);
+    int input_numbers[sizemass];
+    printf("Введите числа для сортировки в консоль.\n");
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < sizemass; i++) {
         scanf("%d", &input_numbers[i]);
     }
-    numberSort(input_numbers, 0, N - 1);
+    numberSort(input_numbers, 0, sizemass - 1);
+    if (check_mass(input_numbers, sizemass) == 1){
     printf("Отсортированный от большего к меньшему массив:");
-    for (int i = N - 1; i > -1; i--) {
+    for (int i = sizemass - 1; i > -1; i--) {
         printf("%d ", input_numbers[i]);
     }
     printf("\n");
+} else printf("Ошибка сортировки.\n");
 }
 
 void massSort()
 {
-    int input_numbers[N];
-    printf("Введите 10 чисел для сортировки в консоль.\n");
-    for (int i = 0; i < N; i++) {
+    int sizemass;
+    printf("Введите количество сортируемых чисел:\n");
+    scanf("%d", &sizemass);
+    int input_numbers[sizemass];
+    printf("Введите числа для сортировки в консоль.\n");
+    for (int i = 0; i < sizemass; i++) {
         scanf("%d", &input_numbers[i]);
     }
-    numberSort(input_numbers, 0, N - 1);
+    numberSort(input_numbers, 0, sizemass - 1);
+    if (check_mass(input_numbers, sizemass) == 1){
     printf("Отсортированный от меньшего к большему массив:");
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < sizemass; i++) {
         printf("%d ", input_numbers[i]);
     }
     printf("\n");
+} else printf("Ошибка сортировки.\n");
 }
 
 void textrmassSort()
@@ -258,8 +273,7 @@ void textrmassSort()
     int i = 0;
     int file_numbers[N];
     f1
-            = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                    "thirdparty/test.txt",
+            = fopen("../thirdparty/test.txt",
                     "r");
     if (f1 != NULL) {
         while (feof(f1) == 0) {
@@ -268,9 +282,9 @@ void textrmassSort()
         }
         fclose(f1);
         numberSort(file_numbers, 0, N - 1);
+        if (check_mass(file_numbers, N) == 1){
         f2
-                = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                        "thirdparty/revres.txt",
+                = fopen("../thirdparty/revres.txt",
                         "w");
         printf("Массив, записанный в файл:");
         for (i = N - 1; i > -1; i--) {
@@ -281,7 +295,8 @@ void textrmassSort()
         printf("\nОтсортированный от большего к меньшему массив "
                "записан "
                "в revres.txt\n");
-    }
+    } else printf("Ошибка сортировки.\n");
+}
 }
 
 void textmassSort()
@@ -291,10 +306,8 @@ void textmassSort()
     int i = 0;
     int file_numbers[N];
 
-    f1
-            = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                    "thirdparty/test.txt",
-                    "r");
+    f1 = fopen("../thirdparty/test.txt",
+               "r");
 
     if (f1 != NULL) {
         while (feof(f1) == 0) {
@@ -303,9 +316,9 @@ void textmassSort()
         }
         fclose(f1);
         numberSort(file_numbers, 0, N - 1);
+        if (check_mass(file_numbers, N) == 1){
         f2
-                = fopen("/home/killreal/TRPO/Sorting-the-input-data/"
-                        "thirdparty/res.txt",
+                = fopen("../thirdparty/res.txt",
                         "w");
         printf("Массив, записанный в файл:");
         for (i = 0; i < N; i++) {
@@ -316,5 +329,7 @@ void textmassSort()
         printf("\nОтсортированный от меньшего к большему массив "
                "записан "
                "в res.txt\n");
-    }
+    } else printf("Ошибка сортировки.\n");
 }
+}
+
