@@ -71,7 +71,7 @@ int vocabularySort()
     char strings[line][column], str[column];
     FILE* f;
     int count = 0, i, j;
-    if ((f = fopen("../thirdparty/testtext.txt", "w")) == NULL) {
+    if ((f = fopen("../thirdparty/testtext.txt", "r")) == NULL) {
         return 1;
     }
     /* Считываем слова из файла */
