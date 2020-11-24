@@ -14,14 +14,15 @@ typedef struct DATE {
     int year;
 } date;
 
-int check_mass(int input[], int s){
+int check_mass(int input[], int s)
+{
     int n = s, a[n];
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         a[i] = input[i];
     }
-    for (int i = 0; i < n - 1; i++){
+    for (int i = 0; i < n - 1; i++) {
         if (a[i] > a[i + 1])
-        return 0;
+            return 0;
     }
     return 1;
 }
@@ -102,10 +103,7 @@ int rvocabularySort()
     char strings[line][column], str[column];
     FILE* f;
     int count = 0, i, j;
-    if ((f
-         = fopen("../thirdparty/testtext.txt",
-                 "r"))
-        == NULL) {
+    if ((f = fopen("../thirdparty/testtext.txt", "r")) == NULL) {
         return 1;
     }
     /* Считываем слова из файла */
@@ -138,9 +136,7 @@ int dateSort(int argc, char* argv[])
     int j = 0;
     int size;
     FILE *f1, *f2;
-    f1
-            = fopen("../thirdparty/datetest.txt",
-                    "r");
+    f1 = fopen("../thirdparty/datetest.txt", "r");
     fseek(f1, 0, SEEK_END);
     size = ftell(f1);
     fseek(f1, 0, SEEK_SET);
@@ -203,9 +199,7 @@ int dateSort(int argc, char* argv[])
                 }
             }
         }
-        f2
-                = fopen("../thirdparty/dateres.txt",
-                        "w");
+        f2 = fopen("../thirdparty/dateres.txt", "w");
         printf("Массив, записанный в файл:");
         for (i = 0; i < size; i++) {
             fprintf(f2, "%d", arr[i].day);
@@ -237,13 +231,14 @@ void rmassSort()
         scanf("%d", &input_numbers[i]);
     }
     numberSort(input_numbers, 0, sizemass - 1);
-    if (check_mass(input_numbers, sizemass) == 1){
-    printf("Отсортированный от большего к меньшему массив:");
-    for (int i = sizemass - 1; i > -1; i--) {
-        printf("%d ", input_numbers[i]);
-    }
-    printf("\n");
-} else printf("Ошибка сортировки.\n");
+    if (check_mass(input_numbers, sizemass) == 1) {
+        printf("Отсортированный от большего к меньшему массив:");
+        for (int i = sizemass - 1; i > -1; i--) {
+            printf("%d ", input_numbers[i]);
+        }
+        printf("\n");
+    } else
+        printf("Ошибка сортировки.\n");
 }
 
 void massSort()
@@ -257,13 +252,14 @@ void massSort()
         scanf("%d", &input_numbers[i]);
     }
     numberSort(input_numbers, 0, sizemass - 1);
-    if (check_mass(input_numbers, sizemass) == 1){
-    printf("Отсортированный от меньшего к большему массив:");
-    for (int i = 0; i < sizemass; i++) {
-        printf("%d ", input_numbers[i]);
-    }
-    printf("\n");
-} else printf("Ошибка сортировки.\n");
+    if (check_mass(input_numbers, sizemass) == 1) {
+        printf("Отсортированный от меньшего к большему массив:");
+        for (int i = 0; i < sizemass; i++) {
+            printf("%d ", input_numbers[i]);
+        }
+        printf("\n");
+    } else
+        printf("Ошибка сортировки.\n");
 }
 
 void textrmassSort()
@@ -272,9 +268,7 @@ void textrmassSort()
 
     int i = 0;
     int file_numbers[N];
-    f1
-            = fopen("../thirdparty/test.txt",
-                    "r");
+    f1 = fopen("../thirdparty/test.txt", "r");
     if (f1 != NULL) {
         while (feof(f1) == 0) {
             fscanf(f1, "%d ", &file_numbers[i]);
@@ -282,21 +276,20 @@ void textrmassSort()
         }
         fclose(f1);
         numberSort(file_numbers, 0, N - 1);
-        if (check_mass(file_numbers, N) == 1){
-        f2
-                = fopen("../thirdparty/revres.txt",
-                        "w");
-        printf("Массив, записанный в файл:");
-        for (i = N - 1; i > -1; i--) {
-            fprintf(f2, "%d ", file_numbers[i]);
-            printf("%d ", file_numbers[i]);
-        }
-        fclose(f2);
-        printf("\nОтсортированный от большего к меньшему массив "
-               "записан "
-               "в revres.txt\n");
-    } else printf("Ошибка сортировки.\n");
-}
+        if (check_mass(file_numbers, N) == 1) {
+            f2 = fopen("../thirdparty/revres.txt", "w");
+            printf("Массив, записанный в файл:");
+            for (i = N - 1; i > -1; i--) {
+                fprintf(f2, "%d ", file_numbers[i]);
+                printf("%d ", file_numbers[i]);
+            }
+            fclose(f2);
+            printf("\nОтсортированный от большего к меньшему массив "
+                   "записан "
+                   "в revres.txt\n");
+        } else
+            printf("Ошибка сортировки.\n");
+    }
 }
 
 void textmassSort()
@@ -306,8 +299,7 @@ void textmassSort()
     int i = 0;
     int file_numbers[N];
 
-    f1 = fopen("../thirdparty/test.txt",
-               "r");
+    f1 = fopen("../thirdparty/test.txt", "r");
 
     if (f1 != NULL) {
         while (feof(f1) == 0) {
